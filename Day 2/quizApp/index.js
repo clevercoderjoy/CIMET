@@ -2,25 +2,24 @@ import { questions } from "./quiz.js";
 
 const btnStart = document.querySelector(".btnStart");
 const quizContent = document.querySelector(".quizContent");
-const btnNext = document.querySelector(".btnNext");
 const getOptions = document.querySelector(".options");
 const score = document.querySelector(".scores");
-let myScores = 0;
-let userChoice = 0;
+let myScores;
+let userChoice;
 let intervalId;
-
 
 btnStart.addEventListener("click", () => {
   quizContent.style.display = "block";
   btnStart.style.display = "none"
-  console.log(quizContent.querySelector(".options"))
   startQuiz();
 })
 
 getOptions.addEventListener("click", (e) => {
-  getOptions.querySelectorAll("p").forEach((tag) => tag.style.backgroundColor = "");
-  userChoice = e.target.innerText;
-  e.target.style.backgroundColor = "tomato";
+  if (e.target.tagName === "BUTTON") {
+    getOptions.querySelectorAll("button").forEach((tag) => tag.disabled = true);
+    userChoice = e.target.innerText;
+    e.target.style.backgroundColor = "tomato";
+  }
 })
 
 const removeAllOptions = (parentElement) => {
@@ -34,7 +33,7 @@ const showQuestion = (currentQuestionIndex) => {
     quizContent.querySelector("h2").innerText = questions[currentQuestionIndex].question;
     removeAllOptions(quizContent.querySelector(".options"));
     questions[currentQuestionIndex].options.map((option) => {
-      const optionContainer = document.createElement("p");
+      const optionContainer = document.createElement("button");
       quizContent.querySelector(".options").appendChild(optionContainer);
       optionContainer.innerText = option
     })
@@ -44,26 +43,38 @@ const showQuestion = (currentQuestionIndex) => {
 const checkAnswer = (currentQuestionIndex, userChoice) => {
   if (currentQuestionIndex < questions.length && questions[currentQuestionIndex].answer === Number(userChoice)) {
     myScores++;
-    userChoice = 0;
+    userChoice = "";
   }
+  updateScores();
 }
 
 const updateScores = () => {
   score.innerHTML = `My Score: ${myScores}`
 }
 
+const randomizeArray = (arr) => {
+
+}
+
 const startQuiz = () => {
   let currentQuestionIndex = 0;
+  myScores = 0;
+  userChoice = "";
   showQuestion(currentQuestionIndex);
-  checkAnswer(currentQuestionIndex, userChoice)
-  updateScores();
   intervalId = setInterval(() => {
+    checkAnswer(currentQuestionIndex, userChoice)
+    currentQuestionIndex++;
     if (currentQuestionIndex >= questions.length) {
       clearInterval(intervalId);
+      return;
     }
-    checkAnswer(currentQuestionIndex, userChoice)
-    updateScores();
-    currentQuestionIndex++;
+    userChoice = "";
     showQuestion(currentQuestionIndex);
-  }, 3000);
+  }, 1000);
 }
+
+
+// randomize array
+// show a reset button and restart quiz
+// show a timer
+// skip to next ques on click of next button

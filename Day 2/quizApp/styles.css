@@ -58,19 +58,15 @@ body {
   gap: 2rem;
 }
 
-.options p {
+.options button {
   margin: 5px 0;
-  padding: 10px;
+  padding: 1rem 1.5rem;
   border: 1px solid #ccc;
+  background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.options p:hover {
+.options button:hover {
   background-color: #f0f0f0;
-}
-
-.btnNext {
-  display: flex;
-  margin: auto;
 }

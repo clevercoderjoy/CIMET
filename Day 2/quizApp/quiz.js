@@ -5,9 +5,9 @@ export const questions = [
     answer: 4,
   },
   {
-    question: "2 - 2",
-    options: [0, 2, 3, 4],
-    answer: 0,
+    question: "2 - 1",
+    options: [1, 2, 3, 4],
+    answer: 1,
   },
   {
     question: "2 + 4",
