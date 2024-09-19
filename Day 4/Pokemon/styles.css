@@ -1,0 +1,145 @@
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+select {
+  padding: 1rem 1.5rem;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+select * {
+  padding: 1rem 1.5rem;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+#search {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.pkmnContainer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.flip-card-front {
+  background-color: white;
+}
+
+.flip-card-back {
+  background-color: tomato;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pkmn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.pkmn h2 {
+  margin: 1rem;
+}
+
+.pkmnFront .pkmnImg {
+  width: 275px;
+  height: 300px;
+  object-fit: contain;
+  border: 3px solid black;
+  border-radius: 3px;
+}
+
+.pkmnFront p {
+  margin: 0.5rem;
+}
+
+.pkmnBack p {
+  font-size: 18px;
+  margin: 0.5rem 0;
+}
+
+.load-more-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 1rem 2rem;
+  font-size: 18px;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #45a049;
+}
+
+.load-more-btn:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
+}

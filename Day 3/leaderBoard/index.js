@@ -51,3 +51,6 @@ const updateLeaderBoard = () => {
     board.append(playerDiv);
   })
 }
+
+// implement sorting
+// delete and increment and decrement functionality 
