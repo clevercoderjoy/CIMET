@@ -19,8 +19,6 @@ const displayCircles = () => {
   if (undoContainer.length > 0) {
     redo.disabled = false;
   }
-  console.log("undoContainer", undoContainer);
-  console.log("CircleContainer", circleContainer);
 }
 
 document.addEventListener("click", (e) => {

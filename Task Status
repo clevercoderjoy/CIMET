@@ -2,6 +2,15 @@ Day 1:
 	
 Day 2:
 	quiz: Almost Done 
+
 Day 3:
-	LeaderBoard: Working on it; Some functionality pending
-	Pokemon: Started 
+	LeaderBoard: Working on it; 
+		increment, decrement, delete and sorting functionality remaining
+
+Day 4:
+	Pokemon: Working on it
+		filter by name, type and rendering pokemons remaining
+
+Day 5: 
+	Drum Kit: audio playing functionality on keypress and click remaining
+	Create Circles: Done
