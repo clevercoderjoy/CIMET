@@ -20,19 +20,52 @@ const media = [
   { src: tomImg, alt: "tom" },
 ]
 
-const handleEvent = (e) => {
-  if (e.type === "keydown") {
-    if (e.key === "w") {
-      audioTag.src = snareSound;
-      audioTag.play();
-    }
-  }
-  else if (e.type === "click") { }
-  console.log(e)
+const setAudioSrc = (src) => {
+  audioTag.src = src;
 }
 
-const addMultipleEventListeners = (image, event) => {
-  image.addEventListener(event, (e) => handleEvent(e));
+const handleEvent = (e) => {
+  if (e.type === "keydown") {
+    switch (e.key) {
+      case "w": {
+        setAudioSrc(crashSound);
+        break;
+      }
+      case "a": {
+        setAudioSrc(kickSound);
+        break;
+      }
+      case "s": {
+        setAudioSrc(snareSound);
+        break;
+      }
+      case "d": {
+        setAudioSrc(tomSound);
+        break;
+      }
+    }
+  }
+  else if (e.type === "click") {
+    switch (e.target.alt) {
+      case "crash": {
+        setAudioSrc(crashSound);
+        break;
+      }
+      case "kick": {
+        setAudioSrc(kickSound);
+        break;
+      }
+      case "snare": {
+        setAudioSrc(snareSound);
+        break;
+      }
+      case "tom": {
+        setAudioSrc(tomSound);
+        break;
+      }
+    }
+  }
+  audioTag.play();
 }
 
 media.map(({ src, alt }) => {
@@ -44,12 +77,7 @@ media.map(({ src, alt }) => {
   image.classList.add(".box", ".key");
   image.setAttribute("id", alt)
   right.append(image)
-  addMultipleEventListeners(image, "click")
+  image.addEventListener("click", (e) => handleEvent(e))
 });
 
 document.addEventListener("keydown", handleEvent);
-
-console.log(audioTag)
-
-// enable audio play on key press
-// enable audio play on clicks
