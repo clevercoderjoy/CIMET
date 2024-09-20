@@ -43,3 +43,10 @@ loadMoreBtn.addEventListener("click", async () => {
   offset += limit;
   await processPokemonData(limit, offset);
 });
+
+
+// get all the types from api
+// list them down inside the select tag
+// render all the pokemons with it's details on the dom
+// apply name filter
+// apply type filter
