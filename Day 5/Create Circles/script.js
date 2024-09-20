@@ -12,13 +12,9 @@ const generateRandomColor = () => {
 
 const displayCircles = () => {
   circleContainer.map((element) => root.append(element));
-  if (circleContainer.length > 0) {
-    undo.disabled = false;
-    reset.disabled = false;
-  }
-  if (undoContainer.length > 0) {
-    redo.disabled = false;
-  }
+  undo.disabled = circleContainer.length === 0;
+  reset.disabled = circleContainer.length === 0;
+  redo.disabled = undoContainer.length === 0;
 }
 
 document.addEventListener("click", (e) => {
@@ -40,6 +36,7 @@ reset.addEventListener("click", (e) => {
   circleContainer.forEach((circle) => circle.remove());
   circleContainer = [];
   undoContainer = [];
+  displayCircles();
 })
 
 undo.addEventListener("click", (e) => {
@@ -48,6 +45,7 @@ undo.addEventListener("click", (e) => {
     const elementToRemove = circleContainer.pop();
     undoContainer.push(elementToRemove);
     elementToRemove.remove();
+    displayCircles();
   }
 })
 
@@ -57,5 +55,6 @@ redo.addEventListener("click", (e) => {
     const CurrentCircleToPush = undoContainer.pop();
     circleContainer.push(CurrentCircleToPush);
     root.append(CurrentCircleToPush);
+    displayCircles();
   }
 })
