@@ -9,8 +9,6 @@ const TaskProvider = ({ children }) => {
     return storedTodos ? JSON.parse(storedTodos) : [];
   });
 
-  console.log(todos)
-
   const [editingId, setEditingId] = useState(null);
   const [editTaskName, setEditTaskName] = useState("");
   const [filteredTodos, setFilteredTodos] = useState(todos);
