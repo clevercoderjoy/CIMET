@@ -1,0 +1,24 @@
+.headerContainer {
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.todoPages {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 2rem auto;
+}
+
+.todoPage {
+  border: 3px solid black;
+  padding: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.todoPage:hover {
+  background: #000;
+  color: white;
+}

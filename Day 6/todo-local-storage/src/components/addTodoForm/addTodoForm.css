@@ -1,0 +1,53 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.addTaskFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.addTaskIp,
+.editTaskIp {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 20rem;
+  font-weight: bold;
+  border: 3px solid black;
+}
+
+.addTaskIp:hover,
+.editTaskIp:hover {
+  color: white;
+  background-color: black;
+}
+
+.editTaskIp {
+  width: 20rem;
+}
+
+.addTaskBtn {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addTaskBtn:hover {
+  background-color: black;
+}
