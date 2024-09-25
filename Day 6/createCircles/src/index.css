@@ -5,7 +5,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Montserrat";
-  background-color: black;
   position: relative;
 }
 
@@ -19,9 +18,8 @@
 
 .btn {
   background-color: transparent;
-  border: 3px solid white;
+  border: 3px solid black;
   border-radius: 5px;
-  color: white;
   padding: 0.5rem 1rem;
   font-weight: bold;
   font-size: 20px;
@@ -29,8 +27,8 @@
 }
 
 .btn:hover {
-  background: #fff;
-  color: black;
+  background: #000;
+  color: white;
 }
 
 .circle {

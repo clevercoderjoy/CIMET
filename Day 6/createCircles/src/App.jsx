@@ -18,8 +18,10 @@ function App() {
   }
   const handleUndoClick = (e) => {
     e.stopPropagation();
-    const removedCircle = circles.pop();
-    setUndo(prev => [...prev, removedCircle]);
+    if (circles.length > 0) {
+      const removedCircle = circles.pop();
+      setUndo(prev => [...prev, removedCircle]);
+    }
   };
 
   const handleResetClick = (e) => {
@@ -29,7 +31,11 @@ function App() {
     setRedo([]);
   }
 
-  const handleRedoClick = (e) => { };
+  const handleRedoClick = (e) => {
+    e.stopPropagation();
+    const elementToRedo = undo.pop();
+    setCircles(prev => [...prev, elementToRedo]);
+  };
 
   console.log("circles", circles);
   console.log("undo", undo);
@@ -47,13 +53,13 @@ function App() {
   return (
     <>
       <div className="buttonContainer">
-        <button className="btn" onClick={handleUndoClick}>
+        <button className="btn" disabled={circles.length === 0 ? true : false} onClick={handleUndoClick} style={{ cursor: (circles.length === 0) ? "not-allowed" : "pointer" }}>
           Undo
         </button>
-        <button className="btn" disabled={circles.length <= 0 ? true : false} onClick={handleResetClick} style={{ cursor: (circles.length <= 0 ? "not-allowed" : "pointer") }}>
+        <button className="btn" disabled={circles.length === 0 ? true : false} onClick={handleResetClick} style={{ cursor: (circles.length === 0 ? "not-allowed" : "pointer") }}>
           Reset
         </button>
-        <button className="btn">
+        <button className="btn" disabled={undo.length === 0 ? true : false} style={{ cursor: (undo.length === 0 ? "not-allowed" : "pointer") }} onClick={handleRedoClick}>
           Redo
         </button>
       </div>
