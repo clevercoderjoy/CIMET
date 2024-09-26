@@ -1,17 +1,15 @@
+import { Outlet } from "react-router-dom";
+import Carousal from "./components/Carousal";
 import Footer from "./components/Footer"
 import Header from './components/Header';
 import Hero from "./components/Hero";
-import ShowCard from "./components/ShowCard";
 
 function App() {
 
   return (
     <>
       <Header />
-      <Hero />
-      <Hero />
-      <Hero />
-      <ShowCard />
+      <Outlet />
       <Footer />
     </>
   )

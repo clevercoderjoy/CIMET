@@ -10,3 +10,7 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+
+#root {
+  background-color: #05152e;
+}

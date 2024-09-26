@@ -6,7 +6,7 @@ import { FaInstagram, FaGithub, FaLinkedin, FaWhatsapp, FaUser } from "react-ico
 const Footer = () => {
   return (
     <>
-      <footer className="bg-[#020c1b] py-12 text-white relative">
+      <footer className="bg-[#05152e] py-12 text-white relative">
         <div className="max-w-screen-xl mx-auto flex flex-col items-center">
           <ul className="flex flex-wrap justify-center gap-4 mb-5 text-sm md:gap-8 md:mb-7">
             <li className="cursor-pointer hover:text-pink-500 transition">Terms Of Use</li>
