@@ -2,8 +2,7 @@ import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const ShowCard = () => {
-  const posterUrl = "";
+const ShowCard = ({ image }) => {
   const rating = 10;
 
   return (
@@ -11,7 +10,7 @@ const ShowCard = () => {
       <div className="relative w-full aspect-[1/1.5] bg-cover bg-center mb-6 flex items-end justify-between p-2 transition-all duration-500 hover:opacity-80">
         <div className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden">
           <img
-            src={posterUrl}
+            src={image}
             alt="Show Poster"
             className="w-full h-full object-cover object-center"
           />
@@ -24,7 +23,7 @@ const ShowCard = () => {
             styles={buildStyles({
               pathColor: rating < 5 ? "red" : rating < 7 ? "orange" : "green",
               trailColor: "transparent",
-              textColor: "black",
+              textColor: "White",
               textSize: "40px",
               textY: "55px",
             })}
