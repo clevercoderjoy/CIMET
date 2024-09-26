@@ -1,6 +1,7 @@
 import Footer from "./components/Footer"
 import Header from './components/Header';
 import Hero from "./components/Hero";
+import ShowCard from "./components/ShowCard";
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Hero />
       <Hero />
+      <ShowCard />
       <Footer />
     </>
   )

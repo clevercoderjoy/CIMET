@@ -14,7 +14,7 @@ const Header = () => {
           </div>
           <ul className="hidden md:flex items-center space-x-6">
             <li className="text-white cursor-pointer">
-              <NavLink to="/" className={({ isActive }) => (isActive ? "text-pink-500" : "text-white")}>
+              <NavLink to="/movies" className={({ isActive }) => (isActive ? "text-pink-500" : "text-white")}>
                 Movies
               </NavLink>
             </li>
