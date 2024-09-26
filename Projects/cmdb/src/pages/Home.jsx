@@ -1,11 +1,13 @@
 import HeroBanner from '../components/Hero';
 import Carousal from '../components/Carousal';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+  const { heroImg, trendingShows } = useLoaderData();
   return (
     <>
-      <HeroBanner />
-      <Carousal title={"Trending"} buttonText={{ day: "Day", week: "week" }} />
+      <HeroBanner heroImg={heroImg} />
+      <Carousal trendingShows={trendingShows} buttonText={{ day: "Day", week: "week" }} />
     </>
   )
 }

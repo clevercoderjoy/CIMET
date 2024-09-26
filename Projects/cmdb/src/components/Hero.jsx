@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+const HeroBanner = ({ heroImg }) => {
 
-const HeroBanner = () => {
-  const [background, setBackground] = useState("");
-  const [query, setQuery] = useState("");
   // #05152e 
   return (
     <div className="w-full h-[450px] md:h-[700px] flex items-center relative" style={{ backgroundColor: '#1c4b91' }}>
       <div className="absolute top-0 left-0 w-full h-full opacity-50 overflow-hidden">
-        <img src={background} alt="Background" className="w-full h-full object-cover" />
+        <img src={heroImg} alt="Background" className="w-full h-full object-cover" />
       </div>
       <div
         className="absolute bottom-0 left-0 w-full h-[250px]"
