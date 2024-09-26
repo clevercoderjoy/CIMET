@@ -1,5 +1,6 @@
 import React from "react";
 import { SiHashnode } from "react-icons/si";
+import { AiOutlineTwitter } from "react-icons/ai";
 import { FaInstagram, FaGithub, FaLinkedin, FaWhatsapp, FaUser } from "react-icons/fa";
 
 const Footer = () => {
@@ -54,6 +55,14 @@ const Footer = () => {
               className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:text-pink-500 transition shadow-lg"
             >
               <FaWhatsapp size={24} />
+            </a>
+            <a
+              href="https://x.com/clevercoderjoy"
+              target="_blank"
+              rel="noreferrer"
+              className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:text-pink-500 transition shadow-lg"
+            >
+              <AiOutlineTwitter size={24} />
             </a>
             <a
               href="https://www.instagram.com/clevercoderjoy"
