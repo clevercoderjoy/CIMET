@@ -3,11 +3,13 @@ import App from "../App";
 import Home from "../pages/Home";
 import Explore from '../pages/Explore';
 import { HomeLoader } from "../loaders/HomeLoader";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "",

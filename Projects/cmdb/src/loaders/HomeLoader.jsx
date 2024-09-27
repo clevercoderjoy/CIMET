@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getImageUrl, getTrendingApi, getUpcomingMoviesApi } from "../utils/constants";
 import { generateRandomIndex } from '../utils/helperFunctions';
+import { getImageUrl, getPopularMoviesApi, getPopularTvShowApi, getTopRatedMovieApi, getTopRatedTVShowApi, getTrendingDayApi, getTrendingWeekApi, getUpcomingMoviesApi } from "../utils/constants";
 
 const fetchHeroImg = async () => {
   const response = await axios.get(getUpcomingMoviesApi);
@@ -9,15 +9,43 @@ const fetchHeroImg = async () => {
   return getImageUrl + heroImg.backdrop_path;
 }
 
-const fetchTrendingShows = async () => {
-  const response = await axios.get(getTrendingApi);
-  return response.data.results
+const fetchTrendingDayShows = async () => {
+  const response = await axios.get(getTrendingDayApi);
+  return response.data.results;
+}
+
+const fetchTrendingWeekShows = async () => {
+  const response = await axios.get(getTrendingWeekApi);
+  return response.data.results;
+}
+
+const fetchPopularTvShows = async () => {
+  const response = await axios.get(getPopularTvShowApi);
+  return response.data.results;
+}
+
+const fetchPopularMovieShows = async () => {
+  const response = await axios.get(getPopularMoviesApi);
+  return response.data.results;
+}
+
+const fetchTopRatedTvShows = async () => {
+  const response = await axios.get(getTopRatedTVShowApi);
+  return response.data.results;
+}
+
+const fetchTopRatedMovieShows = async () => {
+  const response = await axios.get(getTopRatedMovieApi);
+  return response.data.results;
 }
 
 export const HomeLoader = async () => {
   const heroImg = await fetchHeroImg();
-  const trendingShows = await fetchTrendingShows();
-  return { heroImg, trendingShows };
-  // const popularShows = await fetchPopularShows();
-  // const topRatedShows = await fetchTopRatedShows();
+  const trendingDayShows = await fetchTrendingDayShows();
+  const trendingWeekShows = await fetchTrendingWeekShows();
+  const popularTvShows = await fetchPopularTvShows();
+  const popularMovieShows = await fetchPopularMovieShows();
+  const topRatedTvShows = await fetchTopRatedTvShows();
+  const topRatedMovieShows = await fetchTopRatedMovieShows();
+  return { heroImg, trendingDayShows, trendingWeekShows, popularTvShows, popularMovieShows, topRatedTvShows, topRatedMovieShows };
 }
