@@ -20,6 +20,10 @@ export const router = createBrowserRouter([
         loader: HomeLoader,
       },
       {
+        element: <ShowPage />,
+        path: ":id"
+      },
+      {
         path: "explore",
         children: [
           {
@@ -31,11 +35,11 @@ export const router = createBrowserRouter([
             element: <ShowPage />,
           },
           {
-            path: "tvShows",
+            path: "tvshows",
             element: <Explore />,
           },
           {
-            path: "tvShows/:tvShowId",
+            path: "tvshows/:tvshowId",
             element: <ShowPage />,
           },
         ],
