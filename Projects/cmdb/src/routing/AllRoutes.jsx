@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Explore from '../pages/Explore';
 import { HomeLoader } from "../loaders/HomeLoader";
 import ErrorPage from "../pages/ErrorPage";
+import Search from '../pages/Search';
+import ShowPage from '../pages/ShowPage';
 
 export const router = createBrowserRouter([
   {
@@ -13,8 +15,9 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
+        index: true,
         element: <Home />,
-        loader: HomeLoader
+        loader: HomeLoader,
       },
       {
         path: "explore",
@@ -24,10 +27,22 @@ export const router = createBrowserRouter([
             element: <Explore />,
           },
           {
-            path: "tv",
+            path: "movies/:movieId",
+            element: <ShowPage />,
+          },
+          {
+            path: "tvShows",
             element: <Explore />,
           },
-        ]
+          {
+            path: "tvShows/:tvShowId",
+            element: <ShowPage />,
+          },
+        ],
+      },
+      {
+        path: "search/:query",
+        element: <Search />,
       },
     ]
   }

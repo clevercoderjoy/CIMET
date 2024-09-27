@@ -31,4 +31,4 @@ export const getAllTvShowsApi = "https://api.themoviedb.org/3/discover/tv?langua
 // with geners & sorting ()
 export const getSortedTvShowsApi = "https://api.themoviedb.org/3/discover/tv?page=3&with_genres=16&sort_by=popularity.desc"
 
-export const getAllMovieApi = "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&api_key=" + API_KEY
+export const getAllMovieApi = "https://api.themoviedb.org/3/discover/movie?page=1&api_key=" + API_KEY

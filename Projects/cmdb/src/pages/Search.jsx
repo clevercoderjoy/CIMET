@@ -1,27 +1,27 @@
 import React from 'react'
 
-const ShowPage = () => {
+function Search() {
   return (
     <div>
       <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>      <div>
-        sfsdfdsfd
+        search
       </div>
     </div>
   )
 }
 
-export default ShowPage
+export default Search

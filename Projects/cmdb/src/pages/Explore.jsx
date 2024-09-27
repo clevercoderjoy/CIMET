@@ -1,7 +1,27 @@
 function Explore() {
   return (
     <div>
-      EXPLORE
+      <div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div><div>
+        EXPLORE
+      </div>
     </div>
   )
 }
