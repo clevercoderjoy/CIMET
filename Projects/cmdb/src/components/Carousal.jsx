@@ -30,9 +30,6 @@ const Carousal = ({ title, shows, buttonText }) => {
   const endIndex = Math.min(startIndex + showsToShow, currentShow.length);
   const showsToDisplay = currentShow.slice(startIndex, endIndex);
 
-  console.log(startIndex, endIndex);
-  
-
   return (
     <div className="max-w-screen-xl mx-auto p-4 m-4">
       <div className="flex justify-between items-center mb-8">
@@ -64,7 +61,7 @@ const Carousal = ({ title, shows, buttonText }) => {
           {"<"}
         </button>
 
-        <div className="flex overflow-x-auto space-x-4 pb-4 mb-8">
+        <div className="flex overflow-x-auto space-x-4 py-4 mb-8">
           {showsToDisplay.map((show) => <ShowCard key={show.id} show={show} />)}
         </div>
 

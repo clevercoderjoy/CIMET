@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router for routing
+import { Link } from 'react-router-dom'
 
-const ErrorPage = () => {
+const Error = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="text-center">
@@ -21,4 +20,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default Error;

@@ -3,51 +3,59 @@ import App from "../App";
 import Home from "../pages/Home";
 import Explore from '../pages/Explore';
 import { HomeLoader } from "../loaders/HomeLoader";
-import ErrorPage from "../pages/ErrorPage";
 import Search from '../pages/Search';
-import ShowPage from '../pages/ShowPage';
+import Error from "../pages/Error";
+import Show from './../pages/Show';
+import { ExploreLoader } from "../loaders/ExploreLoader";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
         index: true,
         element: <Home />,
         loader: HomeLoader,
       },
       {
-        element: <ShowPage />,
-        path: ":id"
-      },
-      {
         path: "explore",
         children: [
           {
-            path: "movies",
+            index: true,
+            element: <Error />,
+          },
+          {
+            path: ":mediaType",
             element: <Explore />,
-          },
-          {
-            path: "movies/:movieId",
-            element: <ShowPage />,
-          },
-          {
-            path: "tvshows",
-            element: <Explore />,
-          },
-          {
-            path: "tvshows/:tvshowId",
-            element: <ShowPage />,
+            loader: (e) => ExploreLoader(e),
+            children: [
+              {
+                path: ":id",
+                element: <Show />,
+              }
+            ]
           },
         ],
       },
       {
-        path: "search/:query",
-        element: <Search />,
+        path: "search",
+        children: [
+          {
+            index: true,
+            element: <Error />,
+          },
+          {
+            path: ":query",
+            element: <Search />,
+            // loader: searchLoader,
+          },
+        ]
       },
+      {
+        path: "*",
+        element: <Error />,
+      }
     ]
   }
 ]);

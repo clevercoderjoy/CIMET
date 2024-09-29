@@ -9,7 +9,7 @@ const ShowCard = ({ show }) => {
   const showTitle = show?.original_title || show?.original_name;
 
   return (
-    <div className="w-[calc(50%-5px)] mb-6 cursor-pointer flex-shrink-0 md:w-[calc(25%-15px)] lg:w-[calc(20%-16px)] transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg overflow-hidden">
+    <div className="w-[calc(50%-5px)] mb-10 cursor-pointer flex-shrink-0 md:w-[calc(25%-15px)] lg:w-[calc(20%-16px)] transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg overflow-hidden">
       <div className="relative w-full aspect-[1/1.5] bg-cover bg-center mb-6 flex items-end justify-between p-2 transition-all duration-500 hover:opacity-80">
         <div className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden">
           <img

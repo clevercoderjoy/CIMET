@@ -1,6 +1,4 @@
-import React from 'react'
-
-const ShowPage = () => {
+const Show = () => {
   return (
     <div>
       <div>
@@ -24,4 +22,4 @@ const ShowPage = () => {
   )
 }
 
-export default ShowPage
+export default Show;
