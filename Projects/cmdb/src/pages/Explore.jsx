@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom"
+import { Outlet, useLoaderData } from "react-router-dom"
 import ShowCard from "../components/ShowCard";
 
 function Explore() {
@@ -23,6 +22,7 @@ function Explore() {
           }
         </div>
       </div>
+      <Outlet />
     </>
   )
 }

@@ -29,14 +29,21 @@ export const router = createBrowserRouter([
             path: ":mediaType",
             element: <Explore />,
             loader: (e) => ExploreLoader(e),
-            children: [
-              {
-                path: ":id",
-                element: <Show />,
-              }
-            ]
           },
         ],
+      },
+      {
+        path: "show/",
+        children: [
+          {
+            index: true,
+            element: <Error />,
+          },
+          {
+            path: ":id",
+            element: <Show />,
+          }
+        ]
       },
       {
         path: "search",
