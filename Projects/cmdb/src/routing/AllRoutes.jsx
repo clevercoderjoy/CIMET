@@ -3,12 +3,12 @@ import App from "../App";
 import Home from "../pages/Home";
 import Explore from '../pages/Explore';
 import { HomeLoader } from "../loaders/HomeLoader";
-import Search from '../pages/SearchResults';
 import Error from "../pages/Error";
 import Show from './../pages/Show';
 import { ExploreLoader } from "../loaders/ExploreLoader";
 import { SearchLoader } from "../loaders/SearchLoader";
 import SearchResults from "../pages/SearchResults";
+import { ShowLoader } from "../loaders/ShowLoader";
 
 export const router = createBrowserRouter([
   {
@@ -35,9 +35,9 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "show/",
-        element: <Show />
-        // loader: ShowLoader,
+        path: "show",
+        element: <Show />,
+        loader: ShowLoader,
       },
       {
         path: "search",

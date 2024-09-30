@@ -21,6 +21,7 @@ const Search = () => {
       <form onSubmit={handleSearchSubmit} className="flex items-center m-auto w-full max-w-[800px]">
         <div className="flex w-full">
           <input
+            autoFocus
             onChange={handleSearchInputChange}
             type="text"
             placeholder="Search for a movie or TV show...."
