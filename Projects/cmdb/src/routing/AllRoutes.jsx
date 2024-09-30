@@ -3,10 +3,12 @@ import App from "../App";
 import Home from "../pages/Home";
 import Explore from '../pages/Explore';
 import { HomeLoader } from "../loaders/HomeLoader";
-import Search from '../pages/Search';
+import Search from '../pages/SearchResults';
 import Error from "../pages/Error";
 import Show from './../pages/Show';
 import { ExploreLoader } from "../loaders/ExploreLoader";
+import { SearchLoader } from "../loaders/SearchLoader";
+import SearchResults from "../pages/SearchResults";
 
 export const router = createBrowserRouter([
   {
@@ -34,30 +36,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "show/",
-        children: [
-          {
-            index: true,
-            element: <Error />,
-          },
-          {
-            path: ":id",
-            element: <Show />,
-          }
-        ]
+        element: <Show />
+        // loader: ShowLoader,
       },
       {
         path: "search",
-        children: [
-          {
-            index: true,
-            element: <Error />,
-          },
-          {
-            path: ":query",
-            element: <Search />,
-            // loader: searchLoader,
-          },
-        ]
+        element: <SearchResults />,
+        loader: SearchLoader,
       },
       {
         path: "*",

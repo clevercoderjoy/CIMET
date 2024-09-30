@@ -1,8 +1,8 @@
-import React from "react";
 import { getImageUrl } from "../utils/constants";
 import CircleRating from "./CircularRating";
 import dayjs from '../../node_modules/dayjs/esm/index';
 import Genres from "./Genres";
+import imgNotFound from "../assets/imgNotFound.svg";
 
 const ShowCard = ({ show }) => {
 
@@ -14,7 +14,7 @@ const ShowCard = ({ show }) => {
         <div className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden">
           <img
             loading="lazy"
-            src={getImageUrl + (show?.backdrop_path)}
+            src={show?.backdrop_path || show?.poster_path ? getImageUrl + (show?.backdrop_path || show?.poster_path) : imgNotFound}
             alt={showTitle}
             className="w-full h-full object-cover object-center text-white"
           />
