@@ -14,8 +14,9 @@
 }
 
 .input-container {
-  position: relative;
+  display: flex;
   width: 100%;
+  border: none;
   max-width: 400px;
 }
 
@@ -24,6 +25,7 @@
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 8px;
+  border: none;
   font-size: 16px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -62,4 +64,9 @@
 .suggestion-item.active {
   background-color: #007bff;
   color: white;
+}
+
+span {
+  z-index: -1;
+  color: gray;
 }

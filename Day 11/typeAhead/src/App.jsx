@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { UPI_HANDLES } from './UPI_HANDLES';
 
 function App() {
 
-  const suggestions = ["ybl", "oksbi", "okhdfc", "upi", "okaxis", "okicici", "paytm", "googlepay", "phonepe"];
+  const suggestions = UPI_HANDLES;
 
 
   const [filteredSuggestions, setFilteredSuggestion] = useState(suggestions);
@@ -12,10 +13,10 @@ function App() {
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    setInputValue(value);
-    if (value.length > 1) {
+    if (value.split("@")[0].length > 0) {
       setShowSuggestions(value.includes("@"));
     }
+    setInputValue(value);
     handleSuggestions(value);
   }
 
@@ -23,6 +24,7 @@ function App() {
     const [val, slug] = value.split("@");
     const filteredUpis = suggestions.filter((upi) => upi.includes(slug));
     setFilteredSuggestion(filteredUpis);
+    setActiveIndex(0);
   }
 
   const handleSelectedSuggestion = (suggestion) => {
@@ -33,6 +35,7 @@ function App() {
 
   const handleKeyDown = (e) => {
     if (inputValue.includes("@")) {
+      const [beforeAt] = inputValue.split("@");
       if (e.key === "ArrowDown") {
         setActiveIndex((prevIndex) => (prevIndex + 1) % filteredSuggestions.length);
       }
@@ -58,20 +61,26 @@ function App() {
         <div className="input-container">
           <input
             type="text"
-            placeholder="Start typing..."
+            placeholder="Enter your UPI id..."
             autoFocus
             className="input-field"
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             value={inputValue}
           />
+          <input
+            type="text"
+            disabled
+            className="input-field"
+          // value={inputValue}
+          />
           {
             showSuggestions && (
-              <div className={`suggestions-box`}>
+              <ul className={`suggestions-box`}>
                 {
-                  filteredSuggestions.map((suggestion, index) => <div className={`suggestion-item ${index === activeIndex ? "active" : ""}`} onClick={() => handleSelectedSuggestion(suggestion)} onMouseEnter={() => handleMouseEnter(index)} key={index}>{suggestion}</div>)
+                  filteredSuggestions.map((suggestion, index) => <li className={`suggestion-item ${index === activeIndex ? "active" : ""}`} onClick={() => handleSelectedSuggestion(suggestion)} onMouseEnter={() => handleMouseEnter(index)} key={index}>{suggestion}</li>)
                 }
-              </div>
+              </ul>
             )
           }
         </div>
