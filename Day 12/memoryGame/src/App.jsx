@@ -1,80 +1,62 @@
 import React, { useState } from "react";
 import "./index.css";
 
-const Tile = ({ id, gridId, image, onClick }) => (
-  <div className="puzzle-item" onClick={() => onClick(id, gridId)}>
-    <img src={`/api/placeholder/${40}/${40}`} alt={`img-${id}`} />
-  </div>
-);
-
 function App() {
-  const [matrixDimension, setMatrixDimension] = useState("");
-  const [showError, setShowError] = useState("");
-  const [puzzleArr, setPuzzleArr] = useState({ arr1: [], arr2: [] });
+  const [dimension, setDimension] = useState(0);
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const value = Number(e.target.value);
-
-    if (value < 2) {
-      setShowError("Dimensions should be between 2 and 9. Try Again!");
-      setMatrixDimension("");
-      setPuzzleArr({ arr1: [], arr2: [] });
-      document.documentElement.style.removeProperty('--grid-dimension');
-    } else {
-      setMatrixDimension(value);
-      setShowError("");
-      const totalTiles = value * value;
-      setPuzzleArr({
-        arr1: Array.from({ length: totalTiles }, (_, i) => ({ id: i, image: `image-${i}` })),
-        arr2: Array.from({ length: totalTiles }, (_, i) => ({ id: i + totalTiles, image: `image-${i + totalTiles}` })),
-      });
+    if (value >= 2 && value <= 9) {
+      setDimension(value);
+      setError("");
       document.documentElement.style.setProperty('--grid-dimension', value);
+    } else {
+      setDimension(0);
+      setError("Dimensions should be between 2 and 9.");
+      document.documentElement.style.removeProperty('--grid-dimension');
     }
   };
 
-  const handleTileClick = (tileId, gridId) => {
-    console.log(`Clicked tile ${tileId} in grid ${gridId}`);
+  const handleTileClick = (tileId) => {
+    console.log(`Clicked tile ${tileId}`);
   };
 
+  const tiles1 = dimension ? Array.from({ length: dimension * dimension }, (_, i) => i) : [];
+  const tiles2 = dimension ? Array.from({ length: dimension * dimension }, (_, i) => i) : [];
+
   return (
-    <>
-      <div className="inputContainer">
+    <div className="app">
+      <div className="input-container">
         <input
           type="number"
-          value={matrixDimension}
+          value={dimension || ""}
           onChange={handleInputChange}
-          disabled={matrixDimension > 0}
+          placeholder="Enter dimensions (2-9)"
+          disabled={dimension > 1}
           autoFocus
-          placeholder="Enter dimensions (4-10)..."
+          min="2"
+          max="9"
         />
       </div>
-      {showError && <p style={{ color: "red" }}>{showError}</p>}
-
-      <div className="puzzleContainer">
-        <div className="arr1">
-          {puzzleArr.arr1.map((tile) => (
-            <Tile
-              key={tile.id}
-              id={tile.id}
-              gridId="arr1"
-              image={tile.image}
-              onClick={handleTileClick}
-            />
+      {error && <p className="error">{error}</p>}
+      <div className="puzzle-container">
+        <div className="grid">
+          {tiles1.map(id => (
+            <div className="puzzle-item" key={id} onClick={() => handleTileClick(id)}>
+              <img src={`/api/placeholder/40/40`} alt={`Tile ${id}`} />
+            </div>
           ))}
         </div>
-        <div className="arr2">
-          {puzzleArr.arr2.map((tile) => (
-            <Tile
-              key={tile.id}
-              id={tile.id}
-              gridId="arr2"
-              image={tile.image}
-              onClick={handleTileClick}
-            />
+        <div className="grid">
+          {tiles2.map((id, index) => (
+            <div className="puzzle-item" key={index} onClick={() => handleTileClick(index)}>
+              <img src={`/api/placeholder/40/40`} alt={`Tile ${index}`} />
+            </div>
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
