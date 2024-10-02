@@ -9,8 +9,8 @@ function App() {
   const [shuffledImages1, setShuffledImages1] = useState([]);
   const [shuffledImages2, setShuffledImages2] = useState([]);
   const [playerInfo, setPlayerInfo] = useState({ score: 0, clicks: 0 });
-  const [gameTile, setGameTile] = useState({ grid1: null, grid2: null });
-  const [matchedTiles, setMatchedTiles] = useState([]);
+  const [flippedTiles, setFlippedTiles] = useState({ grid1: null, grid2: null });
+  const [matchedPairs, setMatchedPairs] = useState([]);
 
   const handleInputChange = (e) => {
     const value = Number(e.target.value);
@@ -18,6 +18,9 @@ function App() {
       setDimension(value);
       setMsg("");
       setGameReady(false);
+      setPlayerInfo({ score: 0, clicks: 0 });
+      setMatchedPairs([]);
+      setFlippedTiles({ grid1: null, grid2: null });
       document.documentElement.style.setProperty('--grid-dimension', value);
     } else {
       setDimension(0);
@@ -64,44 +67,35 @@ function App() {
     }
   }, [dimension]);
 
-  const handleTileClick = (tileId, grid) => {
-    if (matchedTiles.includes(tileId)) return;
+  const handleTileClick = (index, grid) => {
+    if (matchedPairs.some(pair => pair.includes(index))) return;
+    if (flippedTiles[grid] === index) return;
 
-    const newGameTile = { ...gameTile };
+    setFlippedTiles(prev => ({ ...prev, [grid]: index }));
 
-    if (grid === "grid1" && newGameTile.grid1 === null) {
-      newGameTile.grid1 = tileId;
-    }
-    if (grid === "grid2" && newGameTile.grid2 === null) {
-      newGameTile.grid2 = tileId;
-    }
+    setPlayerInfo(prev => ({ ...prev, clicks: prev.clicks + 1 }));
 
-    setGameTile(newGameTile);
+    if (flippedTiles.grid1 !== null && grid === 'grid2' || flippedTiles.grid2 !== null && grid === 'grid1') {
+      const otherGrid = grid === 'grid1' ? 'grid2' : 'grid1';
+      const otherIndex = flippedTiles[otherGrid];
 
-    if (newGameTile.grid1 !== null && newGameTile.grid2 === null && grid === "grid2") {
-      setPlayerInfo((prev) => ({ ...prev, clicks: prev.clicks + 1 }));
-    } else if (newGameTile.grid2 !== null && newGameTile.grid1 === null && grid === "grid1") {
-      setPlayerInfo((prev) => ({ ...prev, clicks: prev.clicks + 1 }));
-    }
-
-    if (newGameTile.grid1 !== null && newGameTile.grid2 !== null) {
-      if (shuffledImages1[newGameTile.grid1] === shuffledImages2[newGameTile.grid2]) {
-        setPlayerInfo((prev) => ({ ...prev, score: prev.score + 1 }));
-        setMatchedTiles((prev) => [...prev, newGameTile.grid1, newGameTile.grid2]);
+      if (shuffledImages1[index] === shuffledImages2[otherIndex]) {
+        setPlayerInfo(prev => ({ ...prev, score: prev.score + 1 }));
+        setMatchedPairs(prev => [...prev, [index, otherIndex]]);
         setMsg("You found a match!");
+        setFlippedTiles({ grid1: null, grid2: null });
       } else {
         setMsg("No match, try again.");
+        setTimeout(() => {
+          setFlippedTiles({ grid1: null, grid2: null });
+        }, 1000);
       }
-
-      setTimeout(() => {
-        setGameTile({ grid1: null, grid2: null });
-      }, 2000);
     }
   };
 
   const tiles = gameReady ? Array.from({ length: dimension * dimension }, (_, i) => i) : [];
-  const totalTiles = dimension * dimension;
-  const gameOver = matchedTiles.length === totalTiles;
+  const totalPairs = (dimension * dimension);
+  const gameOver = matchedPairs.length === totalPairs;
 
   return (
     <div className="app">
@@ -134,11 +128,11 @@ function App() {
           <div className="grid">
             {tiles.map((id) => (
               <div
-                className={`puzzle-item ${matchedTiles.includes(id) ? "matched" : ""}`}
+                className={`puzzle-item ${matchedPairs.some(pair => pair[0] === id) ? "matched" : ""} ${flippedTiles.grid1 === id ? "flipped" : ""}`}
                 key={id}
                 onClick={() => handleTileClick(id, "grid1")}
               >
-                {(matchedTiles.includes(id) || gameTile.grid1 === id) ? (
+                {(matchedPairs.some(pair => pair[0] === id) || flippedTiles.grid1 === id) ? (
                   <img loading="lazy" src={shuffledImages1[id]} alt={`Tile ${id}`} />
                 ) : (
                   <div className="placeholder"></div>
@@ -149,11 +143,11 @@ function App() {
           <div className="grid">
             {tiles.map((id) => (
               <div
-                className={`puzzle-item ${matchedTiles.includes(id) ? "matched" : ""}`}
+                className={`puzzle-item ${matchedPairs.some(pair => pair[1] === id) ? "matched" : ""} ${flippedTiles.grid2 === id ? "flipped" : ""}`}
                 key={id}
                 onClick={() => handleTileClick(id, "grid2")}
               >
-                {(matchedTiles.includes(id) || gameTile.grid2 === id) ? (
+                {(matchedPairs.some(pair => pair[1] === id) || flippedTiles.grid2 === id) ? (
                   <img loading="lazy" src={shuffledImages2[id]} alt={`Tile ${id}`} />
                 ) : (
                   <div className="placeholder"></div>
