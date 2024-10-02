@@ -4,69 +4,55 @@
   box-sizing: border-box;
 }
 
-.app-container {
+html,
+body {
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
 }
 
-.input-container {
-  display: flex;
-  width: 100%;
-  border: none;
-  max-width: 400px;
+.inputContainer {
+  position: relative;
+  width: 300px;
 }
 
-.input-field {
+input {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  border: none;
+  padding: 10px;
   font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.input-field:focus {
-  border-color: #007BFF;
-}
-
-.suggestions-box {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  margin-top: 8px;
-  background-color: white;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 200px;
+  border-radius: 5px;
+  outline: none;
+  font-weight: bold;
+}
+
+.suggestionsContainer {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  max-height: 150px;
   overflow-y: auto;
-  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.suggestion-item {
-  padding: 12px;
-  font-size: 16px;
+.suggestionsContainer li {
+  padding: 10px;
+  margin: 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s;
+  font-weight: bold;
 }
 
-.suggestion-item:hover {
-  background-color: #007bff;
+.suggestionsContainer li:hover {
+  background-color: #f0f0f0;
 }
 
-.suggestion-item.active {
-  background-color: #007bff;
+.suggestionsContainer li.active {
+  background-color: #007BFF;
   color: white;
-}
-
-span {
-  z-index: -1;
-  color: gray;
 }
