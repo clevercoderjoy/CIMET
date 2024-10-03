@@ -8,6 +8,12 @@ import Product from "../pages/Product";
 import Products from "../pages/Products";
 import About from '../pages/About';
 import Cart from '../pages/Cart';
+import axios from 'axios';
+
+const fetchDataFromUrl = async (url) => {
+  const response = await axios.get(url);
+  return response.data;
+}
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +22,8 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
+        loader: () => fetchDataFromUrl("https://fakestoreapi.com/products?limit=5"),
       },
       {
         path: "products",
@@ -24,10 +31,14 @@ export const router = createBrowserRouter([
           {
             index: true,
             element: <Products />,
+            loader: () => fetchDataFromUrl("https://fakestoreapi.com/products"),
           },
           {
             path: ":productId",
             element: <Product />,
+            loader: async ({ params }) => {
+              return fetchDataFromUrl(`https://fakestoreapi.com/products/${params.productId}`);
+            }
           }
         ]
       },
@@ -36,7 +47,8 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Blogs />
+            element: <Blogs />,
+            loader: () => fetchDataFromUrl("https://jsonplaceholder.typicode.com/posts"),
           },
           {
             path: ":blogId",

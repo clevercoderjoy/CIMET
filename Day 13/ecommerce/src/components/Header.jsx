@@ -9,7 +9,7 @@ const Header = () => {
           <Link to={"/"}>LOGO</Link>
         </h1>
         <nav>
-          <ul className="flex space-x-6 text-lg font-medium">
+          <ul className="flex space-x-6 text-lg font-bold">
             <li>
               <Link to="/products" className="text-gray-600 hover:text-blue-500 transition-colors">Products</Link>
             </li>
