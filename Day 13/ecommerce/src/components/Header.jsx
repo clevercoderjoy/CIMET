@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
 const Header = () => {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <header className="bg-white shadow-md">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -17,7 +20,7 @@ const Header = () => {
               <Link to="/blogs" className="text-gray-600 hover:text-blue-500 transition-colors">Blogs</Link>
             </li>
             <li>
-              <Link to="/cart" className="text-gray-600 hover:text-blue-500 transition-colors">Cart</Link>
+              <Link to="/cart" className="text-gray-600 hover:text-blue-500 transition-colors">Cart ( {cartItems.length} )</Link>
             </li>
             <li>
               <Link to="/about" className="text-gray-600 hover:text-blue-500 transition-colors">About Us</Link>
