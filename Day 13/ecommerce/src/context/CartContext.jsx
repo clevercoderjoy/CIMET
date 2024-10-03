@@ -7,7 +7,6 @@ export const CartContextProvider = ({ children }) => {
 
   const addToCart = (product) => {
     const doesItemExist = cartItems.find((item) => item.id === product.id);
-    console.log(doesItemExist)
     if (doesItemExist) {
       updateCart(product, "increment");
     }
@@ -15,7 +14,7 @@ export const CartContextProvider = ({ children }) => {
       setCartItems(cartItems => [...cartItems, { ...product, quantity: 1 }])
     }
   }
-  console.log(cartItems)
+
   const updateCart = (product, updateType) => {
     if (updateType === "increment") {
       setCartItems(cartItems => cartItems.map((cartItem) => cartItem.id === product.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem));
@@ -29,13 +28,14 @@ export const CartContextProvider = ({ children }) => {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== product.id));
   }
 
-  const calculateTotalCostPerItem = (id) => { }
-
-  const calculateTotalCost = () => { }
+  const calculateTotalCostPerItem = (product) => {
+    const cartItem = cartItems.find((cartItem) => cartItem.id === product.id);
+    return (cartItem.price * cartItem.quantity).toFixed(2);
+  }
 
   return (
     <>
-      <CartContext.Provider value={{ cartItems, addToCart }}>
+      <CartContext.Provider value={{ cartItems, addToCart, updateCart, deleteFromCart, calculateTotalCostPerItem }}>
         {children}
       </CartContext.Provider>
     </>

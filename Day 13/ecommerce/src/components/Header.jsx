@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import { getTotalCartItemsCount } from '../utils/getTotalCartItemsCount';
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
@@ -17,10 +18,10 @@ const Header = () => {
               <Link to="/products" className="text-gray-600 hover:text-blue-500 transition-colors">Products</Link>
             </li>
             <li>
-              <Link to="/blogs" className="text-gray-600 hover:text-blue-500 transition-colors">Blogs</Link>
+              <Link to="/cart" className="text-gray-600 hover:text-blue-500 transition-colors">Cart ( {getTotalCartItemsCount(cartItems)} )</Link>
             </li>
             <li>
-              <Link to="/cart" className="text-gray-600 hover:text-blue-500 transition-colors">Cart ( {cartItems.length} )</Link>
+              <Link to="/blogs" className="text-gray-600 hover:text-blue-500 transition-colors">Blogs</Link>
             </li>
             <li>
               <Link to="/about" className="text-gray-600 hover:text-blue-500 transition-colors">About Us</Link>
