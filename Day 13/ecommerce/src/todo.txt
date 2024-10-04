@@ -7,5 +7,3 @@ To Add:
 
 1) Local Storage
 2) Multiple Currencies
-3) Pagination for blogs
-4) Continue from same page when navigating back from individual blog
