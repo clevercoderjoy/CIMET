@@ -1,0 +1,11 @@
+To Fix:
+
+1) fix featured products (not able to navigate to individual product on page load)
+2) 
+
+To Add:
+
+1) Local Storage
+2) Multiple Currencies
+3) Pagination for blogs
+4) Continue from same page when navigating back from individual blog
