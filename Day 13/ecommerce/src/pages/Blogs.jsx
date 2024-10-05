@@ -12,9 +12,9 @@ const Blogs = () => {
   }, [data])
 
   return (
-    <div className="bg-gray-100 py-8">
+    <div className="bg-gray-100 py-8 mb-24">
       <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Blogs</h1>
-      <Pagination data={blogList} />
+      <Pagination data={blogList} itemsPerPage={12} />
     </div>
   );
 };

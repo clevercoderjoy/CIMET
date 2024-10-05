@@ -1,10 +1,12 @@
-import React from 'react'
+import "./header.css"
 
 const Header = () => {
   return (
-    <div>
-      Header
-    </div>
+    <>
+      <header>
+        <h1>UNSPLASH</h1>
+      </header>
+    </>
   )
 }
 

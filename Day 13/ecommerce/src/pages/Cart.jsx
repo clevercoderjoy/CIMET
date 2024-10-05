@@ -9,11 +9,10 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 flex flex-col">
       <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
-
-      {cartItems.length > 0 ? (
-        <>
+      <div className="flex-grow">
+        {cartItems.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {cartItems
               .filter(item => item.quantity > 0)
@@ -58,17 +57,19 @@ const Cart = () => {
                 </div>
               ))}
           </div>
-
-          <div className="mt-6 p-4 bg-gray-100 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold">Cart Summary</h2>
-            <div className="mt-4">
-              <p className="text-lg">Total Price: <span className="font-bold">${calculateTotal()}</span></p>
-            </div>
+        ) : (
+          <div className="text-center">
+            <p className="text-xl">Your cart is empty!</p>
           </div>
-        </>
-      ) : (
-        <div className="text-center">
-          <p className="text-xl">Your cart is empty!</p>
+        )}
+      </div>
+
+      {cartItems.length > 0 && (
+        <div className="mt-6 p-4 bg-gray-100 rounded-lg shadow-lg">
+          <h2 className="text-xl font-bold">Cart Summary</h2>
+          <div className="mt-4">
+            <p className="text-lg">Total Price: <span className="font-bold">${calculateTotal()}</span></p>
+          </div>
         </div>
       )}
     </div>

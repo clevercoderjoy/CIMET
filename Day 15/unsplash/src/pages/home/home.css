@@ -1,0 +1,74 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.home-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.home-input-container {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+select:focus,
+input[type="number"]:focus {
+  border-color: #f7ab0a;
+}
+
+.home-buttons-container {
+  text-align: center;
+}
+
+button {
+  background-color: #f7ab0a;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e59f09;
+}

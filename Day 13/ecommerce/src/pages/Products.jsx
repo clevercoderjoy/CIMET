@@ -12,7 +12,7 @@ const Products = () => {
   }, [data]);
 
   return (
-    <div className="bg-gray-100 py-8">
+    <div className="bg-gray-100 py-8 mb-24">
       <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Products</h1>
       <div className="mx-auto flex flex-wrap justify-center gap-4">
         {

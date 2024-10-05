@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { useSearchParams } from "react-router-dom";
 
-const Pagination = ({ data }) => {
+const Pagination = ({ data, itemsPerPage }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialPage = Number(searchParams.get("page")) || 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const blogsPerPage = 20;
-  const totalPages = Math.ceil(data.length / blogsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const blogsToDisplay = () => {
-    const startIndex = (currentPage - 1) * blogsPerPage;
-    const endIndex = startIndex + blogsPerPage;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
     return data.slice(startIndex, endIndex);
   };
 
