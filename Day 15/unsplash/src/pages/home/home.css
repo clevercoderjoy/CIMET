@@ -40,17 +40,25 @@ label {
 }
 
 select,
-input[type="number"] {
+input,
+textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
   outline: none;
+  font-weight: bold;
+}
+
+textarea {
+  height: 150px;
+  resize: none;
 }
 
 select:focus,
-input[type="number"]:focus {
+input:focus,
+textarea:focus {
   border-color: #f7ab0a;
 }
 
