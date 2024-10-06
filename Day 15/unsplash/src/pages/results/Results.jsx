@@ -1,7 +1,7 @@
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FcNext, FcPrevious } from "react-icons/fc";
 import "./results.css";
-import { useEffect, useRef, useState } from 'react';
 
 const Results = () => {
   const location = useLocation();
@@ -42,28 +42,25 @@ const Results = () => {
     return <div className="no-images-message">No Images Found!</div>;
   }
 
-
   return (
     <div className="carousel-container">
       <div className="carousel">
         <button className="carousel-button prev" onClick={handlePrev}>
           <FcPrevious size={100} />
         </button>
-        <div className="images-container">
-          {
-            images?.map((image) => (
-              <div className="image-wrapper" key={image.id}>
-                <img
-                  src={images[currentIndex]?.urls.regular}
-                  alt={images[currentIndex]?.id}
-                  loading="lazy"
-                />
-                <div className="image-number">
-                  Image Number: {currentIndex + 1}
-                </div>
+        <div className="images-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+          {images.map((image, index) => (
+            <div className="image-wrapper" key={image.id}>
+              <img
+                src={image.urls.regular}
+                alt={image.id}
+                loading="lazy"
+              />
+              <div className="image-number">
+                Image Number: {index + 1}
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
         <button className="carousel-button next" onClick={handleNext}>
           <FcNext size={100} />
