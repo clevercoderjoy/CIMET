@@ -16,7 +16,7 @@ const Home = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUserInput(userInput => ({ ...userInput, [name]: value }));
+        setUserInput(userInput => ({ ...userInput, [name]: name === "quantity" ? Number(value) : value }));
     }
 
     const handleSubmit = async (e) => {
@@ -40,24 +40,23 @@ const Home = () => {
     const generateImages = async () => {
 
         switch (userInput.type) {
-            // case "query": {
-            //     const response = await axios.get(`${unsplashApiUrl}/search/photos`, {
-            //         params: {
-            //             client_id: client_id,
-            //             query: userInput.query,
-            //             count: userInput.quantity,
-            //             orientation: userInput.orientation,
-            //         }
-            //     })
-            //     return response.data;
-            //     break;
-            // };
+            case "query": {
+                const response = await axios.get(`${unsplashApiUrl}/search/photos`, {
+                    params: {
+                        client_id: client_id,
+                        query: userInput.query,
+                        per_page: userInput.quantity,
+                        orientation: userInput.orientation,
+                    }
+                })
+                return response.data.results;
+            };
             case "random": {
                 const response = await axios.get(`${unsplashApiUrl}/photos/random`,
                     {
                         params: {
                             client_id: client_id,
-                            count: userInput.quantity,
+                            count: userInput.quantity === 0 ? 5 : userInput.quantity,
                             orientation: userInput.orientation,
                         }
                     }
